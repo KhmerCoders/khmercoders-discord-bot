@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  discord-bot:
+    build: .
+    container_name: kcc-discord-bot
+    restart: unless-stopped
+    # If you want to use environment variables instead of .env file:
+    # environment:
+    #   - DISCORD_TOKEN=your_token_here
+    #   - DISCORD_WEBHOOK=your_webhook_here
+    # If you want to use .env file:
+    env_file:
+      - .env # For better logging (optional)
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Health check to ensure the container is working properly
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

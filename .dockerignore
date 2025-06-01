@@ -1,0 +1,23 @@
+# Version control
+.git
+.gitignore
+
+# Node.js dependencies
+node_modules
+
+# Built files
+dist
+
+# Development and environment files
+.vscode
+.idea
+*.log
+npm-debug.log*
+
+# Local environment variables (depends on your deployment strategy)
+# You might want to include .env in the build and provide values at runtime
+# .env
+
+# OS files
+.DS_Store
+Thumbs.db
