@@ -8,7 +8,7 @@ COPY container-src/package*.json ./
 RUN npm ci
 
 # Copy source code
-COPY tsconfig.json ./
+COPY container-src/tsconfig.json ./
 COPY container-src/src ./src
 
 # Build the application
