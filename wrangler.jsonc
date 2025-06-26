@@ -1,0 +1,35 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "khmercoders-discord-bot",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-06-20",
+	"observability": {
+		"enabled": true
+	},
+	"containers": [
+		{
+			"class_name": "MyContainer",
+			"image": "./container-src/Dockerfile",
+			"max_instances": 10,
+			"name": "khmercoders-discord-containers"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "MY_CONTAINER",
+				"class_name": "MyContainer"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["MyContainer"]
+		}
+	]
+}
