@@ -4,12 +4,12 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package*.json ./
+COPY container-src/package*.json ./
 RUN npm ci
 
 # Copy source code
 COPY tsconfig.json ./
-COPY src ./src
+COPY container-src/src ./src
 
 # Build the application
 RUN npm run build
@@ -21,7 +21,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy only production dependencies
-COPY package*.json ./
+COPY container-src/package*.json ./
 RUN npm ci --omit=dev
 
 # Copy built application from builder stage

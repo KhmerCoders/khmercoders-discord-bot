@@ -13,8 +13,8 @@
 	"containers": [
 		{
 			"class_name": "MyContainer",
-			"image": "./container-src/Dockerfile",
-			"max_instances": 10,
+			"image": "./Dockerfile",
+			"max_instances": 1,
 			"name": "khmercoders-discord-containers"
 		}
 	],
